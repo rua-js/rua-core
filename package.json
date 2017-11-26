@@ -1,0 +1,26 @@
+{
+  "name": "rua-core",
+  "version": "0.0.1",
+  "description": "Rua Registration Core",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/copydog/rua-core.git"
+  },
+  "keywords": [
+    "rua",
+    "rua-core"
+  ],
+  "author": "copydog",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/copydog/rua-core/issues"
+  },
+  "homepage": "https://github.com/copydog/rua-core#readme"
+}
