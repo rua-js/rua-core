@@ -3,8 +3,8 @@ Rua Core provides easier way to manage Rua Adaptors,
 and expose them in a single global variable for use.
 
 ## What is Rua
-Rua.js series' goal is to wrap lots of great javascript libraries,
-to make them much more easier to use.
+Rua.js series' goal is to wrap lots of great React.js libraries,
+to make them easier to use.
 
 You can simply treat it as an adaptor.
 
