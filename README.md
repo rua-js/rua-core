@@ -1,23 +1,15 @@
-# RUA CORE
-Rua Core provides easier way to manage Rua Adaptors, 
-and expose them in a single global variable for use.
+# Rua Core
+Rua Core provides several packages
 
-## What is Rua
-Rua.js series' goal is to wrap lots of great React.js libraries,
-to make them easier to use.
+## Check List
+- [ ] Packager: Register and manage your Rua.js packages
 
-You can simply treat it as an adaptor.
+## What is Rua ?
+Rua.js is an elegant way to write your code and wraps lots of great React.js libraries,
+makes them easier to use.
+
+You can simply consider Rua.js as React library.
 
 ## Philosophy of Rua
-No matter what method we use to make great libraries even greater,
-
-We do not change the original usage of libraries, we enhance it.
-
-Normally, We develop Rua.js for reasons like:
-
-1. We want to write less code in our development
-2. We want to access some methods or variables that is not accessible from original library
-3. We want to enhance the libraries for our own reason, but there is not api for it
-
-We do not fork or copy the source code,
-we use a destructive or non-destructive Adaptor to achieve this. 
+1. Less is more
+2. Write once, Share everywhere
