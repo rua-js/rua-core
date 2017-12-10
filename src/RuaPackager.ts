@@ -1,146 +1,47 @@
-import invariant from 'invariant'
-import AbstractPackager from './abstractions/AbstractPackager'
+import { Store } from './Types'
+import { HasStore, CanBoot } from './Contracts/index'
 
-class RuaPackager extends AbstractPackager {
+export default class RuaPackager implements HasStore, CanBoot {
 
-  /**
-   * Global Root Reference
-   *
-   * @type {object}
-   */
-  protected global: object | undefined = undefined
+  public store: Store = {}
 
-  /**
-   * RuaPackager Root Reference
-   *
-   * @type {object}
-   */
-  protected workspace: any = undefined
+  public booted: boolean = false
 
-  /**
-   * RuaPackager Boot Status
-   *
-   * @type {boolean}
-   */
-  protected booted: boolean = false
-
-  /**
-   * RuaPackager Mounting Path (related to global)
-   *
-   * @type {string}
-   */
-  protected mountingPath: string = '__rua_js_workspace'
-
-  /**
-   * RuaPackager Constructor
-   */
-  constructor () {
-    super()
-    // boot RuaPackager if not booted
-    this.bootIfNotBooted()
-  }
-
-  /**
-   * Boot the packager if not booted
-   *
-   * @returns {boolean}
-   */
-  protected bootIfNotBooted (): boolean {
-    // stop actions if already booted
-    if (this.booted) {
-      return true
-    }
-    // set global variable
-    this.global = RuaPackager.getGlobal()
-    // initialize workspace
-    this.initWorkspace()
-    // set booted status to true
+  public constructor () {
     this.booted = true
-
-    return this.booted
   }
 
-  /**
-   * Initialize workspace
-   *
-   * @returns {boolean}
-   */
-  protected initWorkspace (): boolean {
-    // check global
-    invariant(this.global, '[Rua.js][Core]Global Is Not Found')
-    // init workspace
-    this.workspace[this.mountingPath] = {}
-    return true
+  //----- getter & setter & checker -----
+
+  public getStore (): Store {
+    return this.store
   }
 
-  /**
-   * Check registration status of the given package
-   *
-   * @param {string} name
-   * @returns {boolean}
-   */
-  protected isRegistered (name: string): boolean {
-    return !!this.workspace[name]
+  public getPackage (name: string): any {
+    return this.store[name]
   }
 
-  /**
-   * Force register a package
-   *
-   * @param {string} name
-   * @param {object} module
-   * @returns {boolean}
-   */
-  protected register (name: string, module: object): boolean {
-    this.workspace[name] = module
-    return true
+  public hasPackage (name: string): boolean {
+    return !!this.store[name]
   }
 
-  /**
-   * Register a package if not registered
-   *
-   * @param {string} name
-   * @param {object} module
-   * @returns {boolean}
-   */
-  protected registerIfNotRegistered (name: string, module: object): boolean {
-    if (this.isRegistered(name)) {
-      return true
+  //----- methods -----
+
+  public register (name: string, module: any): any {
+    this.store[name] = module
+    return this.store[name]
+  }
+
+  public unregister (name: string): boolean {
+    delete this.store[name]
+    return !this.store[name]
+  }
+
+  public registerIfNotRegistered (name: string, module: any): any {
+    if (this.hasPackage(name)) {
+      return this.getPackage(name)
     }
 
     return this.register(name, module)
   }
-
-
-  /**
-   * Get workspace
-   *
-   * @returns {object}
-   */
-  protected getWorkspace (): object | undefined {
-    return this.workspace
-  }
-
-  /**
-   * Get mounting package
-   *
-   * @param {string} name
-   * @returns {object}
-   */
-  protected getPackage (name: string): object | undefined {
-    return this.workspace[name]
-  }
-
-  /**
-   * Get global variable of current environment
-   *
-   * @returns {object}
-   */
-  protected static getGlobal (): object {
-    return (new Function('return this'))()
-  }
 }
-
-/**
- * Module export
- */
-export default RuaPackager

@@ -1,19 +1,19 @@
 import RuaPackager from './RuaPackager'
 
-// Note: IIFE used here
 const packager = (() => {
-  // global
-  const global = (new Function('return this'))()
-  // singleton
-  if (global.__rua_packager) {
-    return global.__rua_packager
+  // required variables
+  const workspace = Function('return this')()
+  const path = '__rua_js_packager'
+
+  // if packager is initialized then return it
+  if (workspace[path]) {
+    return workspace[path]
   }
 
-  global.__rua_packager = new RuaPackager()
-
-  return global.__rua_packager
-})()
+  // return new instance of packager
+  return workspace[path] = new RuaPackager()
+})
 
 export {
-  packager
+  packager,
 }
