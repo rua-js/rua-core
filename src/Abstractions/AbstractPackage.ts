@@ -1,6 +1,6 @@
 import { IsPackage, CanBoot } from '../Contracts'
 
-abstract class AbstractPackage implements IsPackage, CanBoot {
+export default abstract class AbstractPackage implements IsPackage, CanBoot {
   /**
    * A package require this variable to be true
    *

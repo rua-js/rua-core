@@ -1,5 +1,6 @@
 import { Store } from './Types'
-import { HasStore, CanBoot } from './Contracts/index'
+import { HasStore, CanBoot } from './Contracts'
+import { AbstractPackage } from './Abstractions'
 
 export default class RuaPackager implements HasStore, CanBoot {
 
@@ -17,7 +18,7 @@ export default class RuaPackager implements HasStore, CanBoot {
     return this.store
   }
 
-  public getPackage (name: string): any {
+  public getPackage (name: string): AbstractPackage {
     return this.store[name]
   }
 
@@ -27,7 +28,7 @@ export default class RuaPackager implements HasStore, CanBoot {
 
   //----- methods -----
 
-  public register (name: string, module: any): any {
+  public register (name: string, module: AbstractPackage): AbstractPackage {
     this.store[name] = module
     return this.store[name]
   }
@@ -37,7 +38,7 @@ export default class RuaPackager implements HasStore, CanBoot {
     return !this.store[name]
   }
 
-  public registerIfNotRegistered (name: string, module: any): any {
+  public registerIfNotRegistered (name: string, module: AbstractPackage): AbstractPackage {
     if (this.hasPackage(name)) {
       return this.getPackage(name)
     }
