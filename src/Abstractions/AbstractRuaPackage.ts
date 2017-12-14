@@ -24,14 +24,17 @@ abstract class AbstractRuaPackage implements IsPackage, CanBoot, HasStore {
   public store: Store = {}
 
   public saveStore (store: Store): Store {
+    // save store
     this.store = store
     return this.store
   }
 
   public resetStore (): Store {
+    // deep clone on store
     const store = (() => {
       return this.store
     })()
+    // reset store
     this.store = {}
     return store
   }
