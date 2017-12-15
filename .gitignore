@@ -6,5 +6,8 @@
 # Dependency
 node_modules
 
-# Mac OS
+# macOS
 .DS_Store
+
+# complied files
+lib
