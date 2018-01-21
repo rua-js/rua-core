@@ -1,10 +1,9 @@
 import * as invariant from 'invariant'
 
 import { Store } from './Types'
-import { HasStore, CanBoot } from './Contracts'
-import { AbstractRuaPackage, AbstractPackage } from './Abstractions'
+import { AbstractRuaPackage } from './Abstractions'
 
-export default class RuaPackager extends AbstractPackage {
+export default class RuaPackager extends AbstractRuaPackage {
 
   /**
    * Contains all rua packages

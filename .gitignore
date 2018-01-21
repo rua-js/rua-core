@@ -11,3 +11,6 @@ node_modules
 
 # complied files
 lib
+
+# test
+converage

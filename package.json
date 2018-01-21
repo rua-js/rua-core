@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest test.ts --coverage",
+    "release": "tsc && npm publish ."
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,11 @@
       "tsx",
       "js",
       "json"
-    ]
+    ],
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    }
   }
 }
