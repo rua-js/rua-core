@@ -6,6 +6,10 @@ import {
 
 import { Store } from '../Types'
 
+/**
+ * All Wrapper Package Should Extends This Class (AbstractRuaPackage)
+ *
+ */
 abstract class AbstractRuaPackage implements IsPackage, CanBoot, HasStore {
   /**
    * A package require this variable to be true
@@ -21,14 +25,30 @@ abstract class AbstractRuaPackage implements IsPackage, CanBoot, HasStore {
    */
   public booted: boolean = false
 
+  /**
+   * The store of this package
+   *
+   * @type {object}
+   */
   public store: Store = {}
 
+  /**
+   * Save new store
+   *
+   * @param {Store} store
+   * @returns {Store}
+   */
   public saveStore (store: Store): Store {
     // save store
     this.store = store
     return this.store
   }
 
+  /**
+   * Reset current store to empty object
+   *
+   * @returns {Store}
+   */
   public resetStore (): Store {
     // deep clone on store
     const store = (() => {
