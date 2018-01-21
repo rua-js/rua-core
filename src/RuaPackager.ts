@@ -1,44 +1,85 @@
 import { Store } from './Types'
 import { HasStore, CanBoot } from './Contracts'
-import { AbstractPackage } from './Abstractions'
+import { AbstractRuaPackage, AbstractPackage } from './Abstractions'
 
-export default class RuaPackager implements HasStore, CanBoot {
+export default class RuaPackager extends AbstractPackage {
 
+  /**
+   * Contains all rua packages
+   *
+   * @type {object}
+   */
   public store: Store = {}
 
-  public booted: boolean = false
-
-  public constructor () {
+  /**
+   * Constructor
+   */
+  public constructor() {
+    super()
     this.booted = true
   }
 
-  //----- getter & setter & checker -----
-
-  public getStore (): Store {
+  /**
+   * Get current store
+   *
+   * @returns {Store}
+   */
+  public getStore(): Store {
     return this.store
   }
 
-  public getPackage (name: string): AbstractPackage {
+  /**
+   * Get a specific package from the store
+   *
+   * @param {string} name
+   * @returns {AbstractRuaPackage | AbstractPackage}
+   */
+  public getPackage(name: string): AbstractRuaPackage | AbstractPackage {
     return this.store[name]
   }
 
-  public hasPackage (name: string): boolean {
+  /**
+   * Test if current store has a specific package
+   *
+   * @param {string} name
+   * @returns {boolean}
+   */
+  public hasPackage(name: string): boolean {
     return !!this.store[name]
   }
 
   //----- methods -----
-
-  public register (name: string, module: AbstractPackage): AbstractPackage {
+  /**
+   * Register a package
+   *
+   * @param {string} name
+   * @param {AbstractRuaPackage | AbstractPackage} module
+   * @returns {AbstractRuaPackage | AbstractPackage}
+   */
+  public register(name: string, module: AbstractRuaPackage | AbstractPackage): AbstractRuaPackage | AbstractPackage {
     this.store[name] = module
     return this.store[name]
   }
 
-  public unregister (name: string): boolean {
+  /**
+   * Remove a package from current store
+   *
+   * @param {string} name
+   * @returns {boolean}
+   */
+  public unregister(name: string): boolean {
     delete this.store[name]
     return !this.store[name]
   }
 
-  public registerIfNotRegistered (name: string, module: AbstractPackage): AbstractPackage {
+  /**
+   * Register a package only if namespace is not taken
+   *
+   * @param {string} name
+   * @param {AbstractRuaPackage | AbstractPackage} module
+   * @returns {AbstractRuaPackage | AbstractPackage}
+   */
+  public registerIfNotRegistered(name: string, module: AbstractRuaPackage | AbstractPackage): AbstractRuaPackage | AbstractPackage {
     if (this.hasPackage(name)) {
       return this.getPackage(name)
     }
