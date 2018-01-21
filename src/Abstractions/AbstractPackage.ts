@@ -1,13 +1,6 @@
-import { IsPackage, CanBoot } from '../Contracts'
+import { CanBoot } from '../Contracts'
 
-export default abstract class AbstractPackage implements IsPackage, CanBoot {
-  /**
-   * A package require this variable to be true
-   *
-   * @type {boolean}
-   */
-  public isRuaPackage: boolean = true
-
+export default abstract class AbstractPackage implements CanBoot {
   /**
    * Boot status
    *
