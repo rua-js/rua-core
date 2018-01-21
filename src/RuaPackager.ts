@@ -1,3 +1,5 @@
+import * as invariant from 'invariant'
+
 import { Store } from './Types'
 import { HasStore, CanBoot } from './Contracts'
 import { AbstractRuaPackage, AbstractPackage } from './Abstractions'
@@ -39,7 +41,7 @@ export default class RuaPackager extends AbstractPackage {
   }
 
   /**
-   * Test if current store has a specific package
+   * Check if current store has a specific package
    *
    * @param {string} name
    * @returns {boolean}
@@ -57,6 +59,10 @@ export default class RuaPackager extends AbstractPackage {
    * @returns {AbstractRuaPackage}
    */
   public register(name: string, module: AbstractRuaPackage): AbstractRuaPackage {
+    invariant(
+      module.isRuaPackage,
+      `package "${name}" is NOT a valid Rua-Package`
+    )
     this.store[name] = module
     return this.store[name]
   }

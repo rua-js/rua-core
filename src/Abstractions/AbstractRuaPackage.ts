@@ -15,7 +15,7 @@ abstract class AbstractRuaPackage implements CanBoot, HasStore {
    *
    * @type {boolean}
    */
-  public static isRuaPackage: boolean = true
+  public isRuaPackage: boolean = true
 
   /**
    * Boot status
