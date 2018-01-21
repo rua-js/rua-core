@@ -32,9 +32,9 @@ export default class RuaPackager extends AbstractPackage {
    * Get a specific package from the store
    *
    * @param {string} name
-   * @returns {AbstractRuaPackage | AbstractPackage}
+   * @returns {AbstractRuaPackage}
    */
-  public getPackage(name: string): AbstractRuaPackage | AbstractPackage {
+  public getPackage(name: string): AbstractRuaPackage {
     return this.store[name]
   }
 
@@ -53,10 +53,10 @@ export default class RuaPackager extends AbstractPackage {
    * Register a package
    *
    * @param {string} name
-   * @param {AbstractRuaPackage | AbstractPackage} module
-   * @returns {AbstractRuaPackage | AbstractPackage}
+   * @param {AbstractRuaPackage} module
+   * @returns {AbstractRuaPackage}
    */
-  public register(name: string, module: AbstractRuaPackage | AbstractPackage): AbstractRuaPackage | AbstractPackage {
+  public register(name: string, module: AbstractRuaPackage): AbstractRuaPackage {
     this.store[name] = module
     return this.store[name]
   }
@@ -76,10 +76,10 @@ export default class RuaPackager extends AbstractPackage {
    * Register a package only if namespace is not taken
    *
    * @param {string} name
-   * @param {AbstractRuaPackage | AbstractPackage} module
-   * @returns {AbstractRuaPackage | AbstractPackage}
+   * @param {AbstractRuaPackage} module
+   * @returns {AbstractRuaPackage}
    */
-  public registerIfNotRegistered(name: string, module: AbstractRuaPackage | AbstractPackage): AbstractRuaPackage | AbstractPackage {
+  public registerIfNotRegistered(name: string, module: AbstractRuaPackage): AbstractRuaPackage {
     if (this.hasPackage(name)) {
       return this.getPackage(name)
     }
