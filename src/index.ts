@@ -1,19 +1,16 @@
 import RuaPackager from './RuaPackager'
+// @ts-ignore
+import * as global from 'global'
 
-const packager = ((): RuaPackager => {
+export const packager = ((): RuaPackager => {
   // required variables
-  const workspace = Function('return this')()
   const path = '__rua_js_packager'
 
   // if packager is initialized then return it
-  if (workspace[path]) {
-    return workspace[path]
+  if (global[path]) {
+    return global[path]
   }
 
   // return new instance of packager
-  return workspace[path] = new RuaPackager()
+  return global[path] = new RuaPackager()
 })()
-
-export {
-  packager,
-}

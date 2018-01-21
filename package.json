@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/rua-js/rua-core#readme",
   "dependencies": {
+    "global": "^4.3.2",
     "invariant": "^2.2.2"
   },
   "devDependencies": {
