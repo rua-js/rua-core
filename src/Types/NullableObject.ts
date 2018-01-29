@@ -1,5 +1,5 @@
-// export default interface NullableObject
-import { AnyObject, Nullable } from './index'
+import AnyObject from './AnyObject'
+import Nullable from './Nullable'
 
 type NullableObject = AnyObject | Nullable
 
