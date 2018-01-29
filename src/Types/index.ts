@@ -5,6 +5,7 @@ import Undefinable from './Undefinable'
 // Any
 import AnyObject from './AnyObject'
 import AnyBoolean from './AnyBoolean'
+import AnyData from './AnyData'
 // Nullable
 import NullableObject from './NullableObject'
 import NullableBoolean from './NullableBoolean'
@@ -26,6 +27,7 @@ export {
   // Any
   AnyObject,
   AnyBoolean,
+  AnyData,
   // Nullable
   NullableObject,
   NullableBoolean,
