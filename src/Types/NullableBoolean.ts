@@ -1,4 +1,4 @@
-import { Nullable } from './index'
+import Nullable from './Nullable'
 
 type NullableBoolean = boolean | Nullable
 
