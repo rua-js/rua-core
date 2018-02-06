@@ -1,7 +1,9 @@
 import { Store } from '../Types/index'
 
-export default interface HasStore {
+interface HasStore {
   store: Store,
   saveStore: (store: Store) => Store
   resetStore: () => Store
 }
+
+export default HasStore

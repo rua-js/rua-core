@@ -1,3 +1,5 @@
-export default interface CanBoot {
+interface CanBoot {
   booted: boolean
 }
+
+export default CanBoot
