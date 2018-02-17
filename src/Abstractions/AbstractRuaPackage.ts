@@ -32,31 +32,9 @@ abstract class AbstractRuaPackage implements CanBoot, HasStore {
   public store: Store = {}
 
   /**
-   * Save new store
-   *
-   * @param {Store} store
-   * @returns {Store}
+   * The third-party driver
    */
-  public saveStore (store: Store): Store {
-    // save store
-    this.store = store
-    return this.store
-  }
-
-  /**
-   * Reset current store to empty object
-   *
-   * @returns {Store}
-   */
-  public resetStore (): Store {
-    // deep clone on store
-    const store = (() => {
-      return this.store
-    })()
-    // reset store
-    this.store = {}
-    return store
-  }
+  public driver: any
 }
 
 export default AbstractRuaPackage
